@@ -160,3 +160,17 @@ document.querySelectorAll('.yt-card').forEach(card => {
     document.querySelectorAll('.video.on, .intro.on').forEach(el => el.classList.remove('on'));
   });
 });
+
+/* ---------- Band photo: start centred on phones, hide hint after swipe ---------- */
+(() => {
+  const sc = document.querySelector('.band__scroller');
+  const img = sc.querySelector('img');
+  const centre = () => { if (sc.scrollWidth > sc.clientWidth) sc.scrollLeft = (sc.scrollWidth - sc.clientWidth) / 2; };
+  img.complete ? centre() : img.addEventListener('load', centre);
+  addEventListener('resize', centre);
+  let start = null;
+  sc.addEventListener('scroll', () => {
+    if (start === null) { start = sc.scrollLeft; return; }
+    if (Math.abs(sc.scrollLeft - start) > 20) sc.parentElement.classList.add('swiped');
+  }, { passive: true });
+})();

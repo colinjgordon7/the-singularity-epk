@@ -244,3 +244,16 @@ body.at-intro .bar { transform: translateY(-100%); opacity: 0; }
   background: center/contain no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='12' fill='%231DB954'/%3E%3Cpath d='M6.5 9.3c3.7-1.1 7.9-.8 11 1M7.2 12.4c3-.9 6.4-.6 9 .9M7.8 15.3c2.4-.6 4.9-.4 7 .7' stroke='%23000' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); }
 .spotify { display: block; width: 100%; border: 0; border-radius: 12px; margin-top: 28px; }
 .book__inner > div.reveal { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+
+/* Band photo: swipeable on phones */
+.band__scroller { height: 100%; }
+.band__hint { display: none; }
+@media (max-width: 860px) {
+  .band__photo::after { display: none; }
+  .band__scroller { overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; scrollbar-width: none; overscroll-behavior-x: contain; }
+  .band__scroller::-webkit-scrollbar { display: none; }
+  .band__scroller img { height: 100%; width: auto; max-width: none; transform: none !important; }
+  .band__hint { display: block; position: absolute; bottom: 14px; left: 50%; translate: -50% 0; padding: 6px 12px; border-radius: 999px;
+    background: rgba(4,5,10,.55); backdrop-filter: blur(6px); color: var(--text); pointer-events: none; transition: opacity .5s; }
+  .band__photo.swiped .band__hint { opacity: 0; }
+}
