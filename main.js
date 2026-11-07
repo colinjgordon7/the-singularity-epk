@@ -146,3 +146,17 @@
     else { vid.pause(); bg.pause(); if (!vid.muted) setSound(false); }
   }, { threshold: [0, .25, .6] }).observe(intro);
 })();
+
+/* ---------- YouTube cards: click swaps thumbnail for the player ---------- */
+document.querySelectorAll('.yt-card').forEach(card => {
+  card.addEventListener('click', e => {
+    if (card.classList.contains('playing') || e.metaKey || e.ctrlKey) return;
+    e.preventDefault();
+    const frame = card.querySelector('.yt-card__frame');
+    frame.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${card.dataset.yt}?autoplay=1&rel=0" title="${card.querySelector('.yt-card__title').textContent}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
+    card.classList.add('playing');
+    // silence page audio
+    document.querySelectorAll('video').forEach(v => (v.muted = true));
+    document.querySelectorAll('.video.on, .intro.on').forEach(el => el.classList.remove('on'));
+  });
+});
