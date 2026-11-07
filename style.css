@@ -238,3 +238,9 @@ body.at-intro .bar { transform: translateY(-100%); opacity: 0; }
 .yt-card__title { font-weight: 500; font-size: 20px; margin-top: 10px; }
 .yt-card.playing .yt-card__play { display: none; }
 @media (max-width: 860px) { .yt-cards { grid-template-columns: 1fr; } }
+
+/* Spotify */
+.btn--spotify::before { content: ""; display: inline-block; width: 1em; height: 1em; margin-right: .5em; vertical-align: -.15em;
+  background: center/contain no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='12' fill='%231DB954'/%3E%3Cpath d='M6.5 9.3c3.7-1.1 7.9-.8 11 1M7.2 12.4c3-.9 6.4-.6 9 .9M7.8 15.3c2.4-.6 4.9-.4 7 .7' stroke='%23000' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); }
+.spotify { display: block; width: 100%; border: 0; border-radius: 12px; margin-top: 28px; }
+.book__inner > div.reveal { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
