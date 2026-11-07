@@ -79,9 +79,10 @@
   let ticking = false;
   function onScroll() {
     ticking = false;
-    const y = scrollY, vh = innerHeight;
-    if (y < vh * 1.2) {
-      const p = y / vh;
+    const vh = innerHeight;
+    const ht = hole.parentElement.getBoundingClientRect().top;
+    if (ht > -vh * 1.2 && ht < vh) {
+      const p = Math.max(0, -ht / vh);
       hole.style.transform = `scale(${1 + p * .9})`;
       hole.style.opacity = 1 - p * .9;
       heroText.style.transform = `translateY(${p * 80}px) scale(${1 - p * .12})`;
@@ -113,4 +114,35 @@
       if (turnOn) { v.muted = false; v.play().catch(() => {}); fig.classList.add('on'); }
     });
   });
+})();
+
+/* ---------- Intro video: sound toggle, pause off-screen, hide bar while on intro ---------- */
+(() => {
+  const intro = document.getElementById('intro');
+  const vid = intro.querySelector('.intro__vid');
+  const bg = intro.querySelector('.intro__bg');
+  const btn = intro.querySelector('.intro__sound');
+  const label = btn.querySelector('.intro__label');
+  const sync = () => { if (Math.abs(bg.currentTime - vid.currentTime) > .3) bg.currentTime = vid.currentTime; };
+  vid.addEventListener('timeupdate', sync);
+  vid.play().catch(() => {});
+  function setSound(on) {
+    vid.muted = !on;
+    intro.classList.toggle('on', on);
+    label.textContent = on ? 'Sound off' : 'Sound on';
+    btn.setAttribute('aria-label', on ? 'Turn sound off' : 'Turn sound on');
+    if (on) {
+      // only one source of audio on the page
+      document.querySelectorAll('.video').forEach(f => { f.querySelector('video').muted = true; f.classList.remove('on'); });
+      vid.play().catch(() => {});
+    }
+  }
+  btn.addEventListener('click', () => setSound(vid.muted));
+  vid.addEventListener('click', () => setSound(vid.muted));
+  document.querySelectorAll('.video').forEach(f => f.addEventListener('click', () => setSound(false)));
+  new IntersectionObserver(([e]) => {
+    document.body.classList.toggle('at-intro', e.intersectionRatio > .6);
+    if (e.intersectionRatio > .25) { vid.play().catch(() => {}); bg.play().catch(() => {}); }
+    else { vid.pause(); bg.pause(); if (!vid.muted) setSound(false); }
+  }, { threshold: [0, .25, .6] }).observe(intro);
 })();

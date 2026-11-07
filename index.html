@@ -30,8 +30,20 @@
 
 <main id="top">
 
+  <!-- INTRO VIDEO -->
+  <section class="intro" id="intro">
+    <video class="intro__bg" src="media/piano-man.mp4" muted loop playsinline autoplay aria-hidden="true"></video>
+    <video class="intro__vid" src="media/piano-man.mp4" poster="media/piano-man-poster.jpg" muted loop playsinline autoplay preload="auto"></video>
+    <div class="intro__flash" aria-hidden="true"></div>
+    <div class="intro__overlay">
+      <p class="mono intro__kicker">Live at The Piano Man · New Delhi</p>
+      <button class="intro__sound" type="button" aria-label="Turn sound on"><span class="intro__icon"></span><span class="intro__label">Sound on</span></button>
+    </div>
+    <a href="#hero" class="scroll-cue mono" aria-label="Scroll down">scroll</a>
+  </section>
+
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero" id="hero">
     <div class="hole" aria-hidden="true">
       <div class="hole__disk"></div>
       <div class="hole__ring"></div>
@@ -63,7 +75,7 @@
     </div>
     <div class="fact reveal">
       <span class="mono">Touring</span>
-      <strong>India — Nov 2026</strong>
+      <strong>India — Oct 2026</strong>
       <small>USA — Summer 2027</small>
     </div>
     <div class="fact reveal">
@@ -102,11 +114,6 @@
     <p class="muted small reveal">Videos play muted. Tap for sound.</p>
     <div class="videos">
       <figure class="video reveal">
-        <video src="media/piano-man.mp4" poster="media/piano-man-poster.jpg" muted loop playsinline preload="metadata"></video>
-        <span class="video__sound" aria-hidden="true"></span>
-        <figcaption>Live at The Piano Man, Delhi</figcaption>
-      </figure>
-      <figure class="video reveal">
         <video src="media/decaf.mp4" poster="media/decaf-poster.jpg" muted loop playsinline preload="metadata"></video>
         <span class="video__sound" aria-hidden="true"></span>
         <figcaption>Decaf</figcaption>
@@ -117,19 +124,9 @@
         <figcaption>Frolicking</figcaption>
       </figure>
     </div>
-    <div class="yts">
-      <figure class="reveal">
-        <div class="yt"><iframe src="https://www.youtube-nocookie.com/embed/Tp7ikQ9l92s" title="The Singularity — Live Reel" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-        <figcaption class="mono">Live reel</figcaption>
-      </figure>
-      <figure class="reveal">
-        <div class="yt"><iframe src="https://www.youtube-nocookie.com/embed/2QbV7C2lgos" title="The Singularity — 1-Take" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-        <figcaption class="mono">1-Take session</figcaption>
-      </figure>
-    </div>
     <p class="more reveal">
-      <a class="link" href="https://www.youtube.com/watch?v=KGAPyCTdfA4" target="_blank" rel="noopener">My People, live ↗</a>
-      <a class="link" href="https://speakerboxlive.com/" target="_blank" rel="noopener">Decaf, Speakerbox Live ↗</a>
+      <a class="link" href="https://speakerboxlive.com/" target="_blank" rel="noopener">Decaf — live at The Piano Man ↗</a>
+      <a class="link" href="https://www.youtube.com/watch?v=KGAPyCTdfA4" target="_blank" rel="noopener">My People — live at The Piano Man ↗</a>
     </p>
   </section>
 
@@ -201,7 +198,7 @@
     <div class="wrap book__inner">
       <h2 class="label reveal"><span>06</span> On tour</h2>
       <!-- Booking contact goes here later -->
-      <p class="book__email reveal">India — Nov 2026<br>USA — Summer 2027</p>
+      <p class="book__email reveal">India — Oct 2026<br>USA — Summer 2027</p>
       <div class="reveal">
         <a href="The-Singularity-Press-Photos.zip" download class="btn btn--big">Download press photos (18 MB)</a>
       </div>
